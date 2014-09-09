@@ -13,24 +13,20 @@ class Player extends CI_Model{
 				modified datetime
 			)
 		';
-		$res = $this->db->query($query);
+		$this->db->query($query);
 	}
 	
 	public function isDuplication($userId){
-		$this->load->database();
-		$res = $this->db->get('player');
-		return true;
-		//return false;
-		//$query = "select userId from player";
-		//$res = $this->db->query($query);
-		//echo var_dump($res);exit;
-		//$res = $this->db->get_where("player",array("userId" => $userId),1,0);
-		/*
-		if($res->num_row() > 0){
+		$this->load->model("PDODB");
+		$bind = array(
+			":userId" => $userId
+		);
+		$res = $this->PDODB->select("player","userId = :userId",$bind);
+		if(count($res) > 0){
 			return true;
 		}else{
 			return false;
-		}*/
+		}
 	}
 
 	public function register($userId, $userHash) {
