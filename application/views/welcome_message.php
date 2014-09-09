@@ -82,6 +82,13 @@
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
+	
+	<form action="/user/register/" method="post">
+		<input type ="text" name ="userId" value="">
+		<input type ="text" name ="userHash" value="">
+		<input type="submit" name ="send">
+	</form>
+	<?php echo phpinfo();?>
 </div>
 
 </body>
