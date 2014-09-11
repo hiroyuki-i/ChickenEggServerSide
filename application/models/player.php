@@ -43,4 +43,24 @@ class Player extends CI_Model{
 		}
 	}
 
+	public function userHashVerify($userId = null,$userHash = null){
+		if(!isset($userId) || !isset($userHash)){
+			return false;
+		}
+		$this->load->model("PDODB");
+		$bind = array(
+			":userId" => $userId
+		);
+		$res = $this->PDODB->select("player","userId = :userId",$bind);
+		if(count($res) > 0){
+			if($userId === $res[0]['userId'] && crypt($userHash) === $res[0]["userHash"]){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	
 }

@@ -126,10 +126,12 @@ class Pdodb extends PDO {
 		}
 	}
 
-	public function select($table, $where = "", $bind = "", $fields = "*") {
+	public function select($table, $where = "",$option = "", $bind = "", $fields = "*") {
 		$sql = "SELECT " . $fields . " FROM " . $table;
 		if (!empty($where))
 			$sql .= " WHERE " . $where;
+		if (!empty($option))
+			$sql .= " " . $option;
 		$sql .= ";";
 		return $this->run($sql, $bind);
 	}

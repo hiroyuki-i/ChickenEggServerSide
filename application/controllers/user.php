@@ -15,7 +15,8 @@ class User extends CI_Controller {
 		}
 		
 		$result = array();
-		$result['userId'] = htmlspecialchars($this->input->post("userId"));
+		$result['userId'] = $this->input->post("userId");
+		$result['userHash'] = $this->input->post("userHash");
 		
 		$this->load->model("Player");
 		if($this->Player->isDuplication($result['userId'])){
@@ -33,21 +34,4 @@ class User extends CI_Controller {
 		exit;
 	}
 
-	/*
-	public function auth(){
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('userId', 'ユーザネーム', 'required|min_length[1]|max_length[32]');
-		$this->form_validation->set_rules('userHash', 'ユーザーハッシュ', 'required|min_length[1]|max_length[64]');
-		if($this->form_validation->run() == false){
-			exit;
-		}
-
-		$this->load->model("Player");
-		if($this->Player->hashVerify($this->input->post("userId"),$this->input->post("userHash"))){
-			exit("true");
-		}else{
-			
-		}
-		
-	}*/
 }
