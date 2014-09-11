@@ -1,5 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+define("USERHASH_SALT","Ddo2F00LMdE45");
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

@@ -9,7 +9,7 @@ class Player extends CI_Model{
 			create table if not exists player (
 				userId varchar(32) Primary Key,
 				userHash varchar(225) Not null,
-				score varchar(128) DEFAULT "0",
+				score BIGINT(128) DEFAULT 0,
 				modified datetime
 			)
 		';
@@ -33,7 +33,7 @@ class Player extends CI_Model{
 		$this->load->database();
 		$data = array(
 			"userId" => $userId,
-			"userHash" => crypt($userHash),
+			"userHash" => crypt($userHash,USERHASH_SALT),
 			"modified" => date("Y-m-d H:i:s")
 		);
 		if($this->db->insert("player",$data) === true){
@@ -53,7 +53,7 @@ class Player extends CI_Model{
 		);
 		$res = $this->PDODB->select("player","userId = :userId",$bind);
 		if(count($res) > 0){
-			if($userId === $res[0]['userId'] && crypt($userHash) === $res[0]["userHash"]){
+			if($userId === $res[0]['userId'] && crypt($userHash,USERHASH_SALT) === $res[0]["userHash"]){
 				return true;
 			}else{
 				return false;

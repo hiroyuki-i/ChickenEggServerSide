@@ -88,7 +88,13 @@
 		<input type ="text" name ="userHash" value="">
 		<input type="submit" name ="send">
 	</form>
-	<?php echo phpinfo();?>
+	<form action="/hiyoko/highscore/" method="post">
+		<input type ="text" name ="userId" value="">
+		<input type ="text" name ="userHash" value="">
+		<input type ="text" name ="score" value="22">
+		<input type="submit" name ="send">
+	</form>
+	<?php echo crypt("12345","ddddddd"); ?>
 </div>
 
 </body>
