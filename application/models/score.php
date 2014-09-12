@@ -7,8 +7,8 @@ class Score extends CI_Model{
 	}
 	
 	public function getRanking(){
-		$this->load->model("PDODB");
-		$records = $this->PDODB->select("player","score > 0 order by score desc limit 10");
+		$this->load->model("Pdodb");
+		$records = $this->Pdodb->select("player","score > 0 order by score desc limit 10");
 		$array = array();
 		if(is_array($records)){
 			foreach($records as $rec){
@@ -22,7 +22,7 @@ class Score extends CI_Model{
 	}
 
 	public function saveScore($userId,$score){
-		$this->load->model("PDODB");
+		$this->load->model("Pdodb");
 		$update = array(
 			"score" => $score,
 			"modified" => date("Y-m-d H:i:s")
@@ -30,7 +30,7 @@ class Score extends CI_Model{
 		$bind = array(
 			":userId" => $userId
 		);
-		if($this->PDODB->update("player",$update,"userId = :userId",$bind) > 0){
+		if($this->Pdodb->update("player",$update,"userId = :userId",$bind) > 0){
 			return true;
 		}else{
 			return false;

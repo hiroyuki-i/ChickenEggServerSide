@@ -17,11 +17,11 @@ class Player extends CI_Model{
 	}
 	
 	public function isDuplication($userId){
-		$this->load->model("PDODB");
+		$this->load->model("Pdodb");
 		$bind = array(
 			":userId" => $userId
 		);
-		$res = $this->PDODB->select("player","userId = :userId",$bind);
+		$res = $this->Pdodb->select("player","userId = :userId",$bind);
 		if(count($res) > 0){
 			return true;
 		}else{
@@ -47,11 +47,11 @@ class Player extends CI_Model{
 		if(!isset($userId) || !isset($userHash)){
 			return false;
 		}
-		$this->load->model("PDODB");
+		$this->load->model("Pdodb");
 		$bind = array(
 			":userId" => $userId
 		);
-		$res = $this->PDODB->select("player","userId = :userId",$bind);
+		$res = $this->Pdodb->select("player","userId = :userId",$bind);
 		if(count($res) > 0){
 			if($userId === $res[0]['userId'] && crypt($userHash,USERHASH_SALT) === $res[0]["userHash"]){
 				return true;
