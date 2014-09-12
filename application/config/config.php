@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-define("USERHASH_SALT","Ddo2F00LMdE45");
+require_once 'define.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ $config['base_url']	= '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

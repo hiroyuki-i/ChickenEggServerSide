@@ -94,7 +94,6 @@
 		<input type ="text" name ="score" value="22">
 		<input type="submit" name ="send">
 	</form>
-	<?php echo crypt("12345","ddddddd"); ?>
 </div>
 
 </body>
