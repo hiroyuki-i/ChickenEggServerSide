@@ -13,8 +13,8 @@ class Score extends CI_Model{
 		if(is_array($records)){
 			foreach($records as $rec){
 				$array[] = array(
-					"userId" => $rec['userId'],
-					"score" => $rec['score']
+					"userId" => htmlspecialchars($rec['userId']),
+					"score" => htmlspecialchars($rec['score'])
 				);
 			}
 		}
