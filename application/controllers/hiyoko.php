@@ -7,7 +7,7 @@ class Hiyoko extends CI_Controller {
 			$this->load->model("Score");
 			exit(json_encode($this->Score->getRanking()));
 		}
-		exit;
+		exit("false");
 	}
 
 	public function highscore(){
